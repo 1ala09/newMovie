@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="newMovie.css">
+    
+</head>
+<body id="secondMainBody">
+    <div id="trending"><h1>TRENDING MOVIES</h1><hr style="width: 300px;"></div>
+    <div id="movieInfoDisplay"></div>
+    <script>
+        const newResult = JSON.parse(localStorage.getItem('resultId'));
+        const name = newResult.title;
+        const poster = newResult.image;
+        const rating = newResult.rating;
+        const Overview = newResult.description;
+        const year = newResult.year;
+        const genre = newResult.genre.join(', ');
+        const indiMovie = `<div class="titleRateCont">
+            <div class="sidebyside">
+                <div class='titleRate'>
+                    <div style="font-size:2rem; font-weight: bold;">${name}</div>
+                    <div class="move">rating:`+' '+`${rating}<img src="rate2.png" class="rateIcon"></div>
+                    <div style="font-size:1.5rem">year:`+' '+`${year}</div>
+                    <h7 class="genreDiv">${genre}</h7>
+                    <p></p>
+                    <div style="font-size:1.3rem">${Overview}</div>
+                    </p>
+                </div>
+                <div class="posterDiv"><img src='${poster}' class="posterImgDiv"></div>
+            </div>           
+        </div>`
+        document.getElementById('movieInfoDisplay').innerHTML += indiMovie;
+    </script>
+</body>
+</html>
